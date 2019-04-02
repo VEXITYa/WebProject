@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+{% if "username" in session %}
+	<a class="navbar-brand" href="/logout">{{session['username']}}</a>
+	<div class="alert alert-primary" role="alert">
+				Привет админ
+	</div>
+{% endblock %}
