@@ -76,18 +76,13 @@ def reg():
     if form.validate_on_submit():
         user_name = form.username.data
         password = form.password.data
-        UsersModel(1).insert(user_name, password)
-        return redirect("/login")
+        password2 = form.password2.data
+        if password == password2 and  not(UsersModel(1).exists(user_name, password)):
+            UsersModel(1).insert(user_name, password)
+            return redirect("/login")
+        else:
+            pass
     return render_template('reg.html', title='Регистрация', form=form)
-
-
-@app.route('/ksdfg12')
-def yalox():
-    if form1.flag.data == 1:
-        return render_template('wasd.html')
-    else:
-        return redirect('/login')
-
 
 
 if __name__ == '__main__':
